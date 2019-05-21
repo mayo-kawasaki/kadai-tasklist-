@@ -21,7 +21,11 @@ class TasksController extends Controller
     // getでtasks/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        //
+        $task = new Task;
+
+        return view('tasks.create', [
+            'task' => $task,
+        ]);
     }
 
     // postでtasks/にアクセスされた場合の「新規登録処理」
@@ -47,7 +51,7 @@ class TasksController extends Controller
     // getでtasks/id/editにアクセスされた場合の「更新画面表示処理」
     public function edit($id)
     {
-        $message = Message::find($id);
+        $task = Task::find($id);
 
         return view('tasks.edit', [
             'task' => $task,
